@@ -16,7 +16,7 @@ Some of that held up. Up to five tracks, everything stays on the Super Cores, an
 ## Test Rig
 
 - **Apple Silicon:** Mac mini M5 Pro (15-core: 5 Super, 10 Performance, no Efficiency cores; 24 GB Unified Memory) running macOS Golden Gate.
-- **DAW:** Ableton Live 12, same version and the same project as Part 1.
+- **DAW:** Ableton Live 12, same version (12.4.6) and the same project as Part 1.
 - **Audio Interface:** RME Babyface Pro FS (USB 2.0 @ 44.1 kHz / 32 samples), latest RME DriverKit driver.
 - **Plugins:** Waves L4 Ultramaximizer (third-party) and Ableton Echo (native).
 - **Method:** Unchanged. Every track carries an identical plugin chain, and instances are raised or removed on all tracks equally until the dropouts stop. The recorded value is the highest per-track count without dropouts.
