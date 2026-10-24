@@ -214,7 +214,7 @@ With that in mind:
 
 ## Open Questions
 
-- **Where does the 10-core ceiling come from?** macOS, CoreAudio's workgroups and Live's thread pool are all candidates. Counting Live's audio threads is the next thing I'd check.
+- **Where does the 10-core ceiling come from?** macOS, CoreAudio's workgroups and Live's thread pool are all candidates.
 - **Does the 18-core M5 Pro or the M5 Max behave the same way?** If the ceiling is "Super Cores plus one P-cluster," the bigger chips would hit it at a different track count. I haven't tested them.
 - **Why is Waves L4 so much more sensitive to busy cores than Echo?** Possibly how much cache or memory bandwidth it needs, but I haven't measured that.
 
