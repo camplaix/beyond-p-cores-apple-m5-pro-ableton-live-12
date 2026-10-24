@@ -27,7 +27,7 @@ The Mac mini M6 and Intel Core Ultra 7 270K Plus results are from Part 1, which 
 
 ## 1 to 5 Tracks: Five Super Cores, No Spill
 
-A single track sustains **44 Waves L4** and **90 Echo** instances at 32 samples. That's 15.4% and 11.8% below the Mac mini M6's 52 and 102. Per core, the M5 Pro's Super Cores are a clear step behind the M6's. On Echo, a single track lands level with the Intel 270K Plus over PCIe (89).
+A single track sustains **44 Waves L4** and **90 Echo** instances at 32 samples. That's 15.4% and 11.8% below the Mac mini M6's 52 and 102. Per core, the M5 Pro's Super Cores are a clear step behind the M6's. They even trail the MacBook Pro base M5 from Part 1, whose fast cores are the same top tier: 96 Echo instances on one track against 90 here. That was a different machine on macOS Tahoe, so I wouldn't read too much into it. On Echo, a single track lands level with the Intel 270K Plus over PCIe (89).
 
 ![1 track, Waves L4, 32 samples](images/m5pro-01ch-l4-32.png)\
 <sub>*1 track, 32 samples, Waves L4: the load runs mostly on Super Core 11, with some time on Cores 12–15. The P-cores carry only background activity.*</sub>
@@ -92,7 +92,7 @@ Which P-group sits out isn't fixed. In most captures it's Cores 1–5. In three 
 ![12 tracks, Echo, 32 samples](images/m5pro-12ch-echo-32.png)\
 <sub>*12 tracks, 32 samples, Ableton Echo: this time P-cores 1–5 carry the audio together with Super Cores 11–15, and P-cores 6–10 sit at background level.*</sub>
 
-The two groups also perform the same. Echo tops out at 45 per track both at 11 tracks, with audio on Cores 6–10, and at 12 tracks, with audio on Cores 1–5. So neither group is slower or reserved by its hardware, and the limit looks like a number of cores rather than specific cores. I don't know where it comes from. Some possibilities:
+The two groups also perform the same. Echo tops out at 45 per track both at 11 tracks, with audio on Cores 6–10, and at 12 tracks, with audio on Cores 1–5. So neither group is slower or reserved by its hardware, and the limit looks like a number of cores rather than specific cores. It isn't only a 32-sample effect either: at 128 samples, the 11th track still causes the same drop (74 → 47 Echo instances per track), so a looser deadline doesn't bring the idle P-cores in, at least up to 128 samples. I don't know where it comes from. Some possibilities:
 
 - **macOS scheduler policy.** With no Efficiency cores, macOS may keep one P-cluster free for system and background work.
 - **CoreAudio's `os_workgroup`** limiting how many threads join the real-time workgroup.
