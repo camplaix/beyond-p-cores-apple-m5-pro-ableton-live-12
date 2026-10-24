@@ -71,7 +71,7 @@ From the sixth track on, the load has to spill onto the P-cores, since there are
 - **Echo:** 84 → **81** per track at 6 tracks, still 81 at 8, then 77 at 9 and 75 at 10.
 - **Waves L4:** 31 → **29** per track at 6 tracks, still 29 at 7 and 8, then 27 at 9 and 26 at 10.
 
-The step from 5 tracks (Super Cores only) to 6 (first P-core) costs only 3.6% on Echo and 6.5% on L4. On a chip with every fast core already busy, the gap between a Super Core and a P-core turns out to be small. The M6 is a different story at this track count: with six fast cores for six tracks, it runs 35 L4 instances per track against the M5 Pro's 29, a 20.7% lead (210 vs. 174 total).
+The step from 5 tracks (Super Cores only) to 6 (first P-core) costs only 3.6% on Echo and 6.5% on L4. On a chip with every fast core already busy, the gap between a Super Core and a P-core turns out to be small. The M6 is a different story at this track count: with six fast cores (2 Super + 4 P) for six tracks, it runs 35 L4 instances per track against the M5 Pro's 29, a 20.7% lead (210 vs. 174 total).
 
 The 9-track captures show the P-group filling up one core at a time: Cores 6–9 carry audio alongside the five Super Cores, while Core 10 is still idle. At 10 tracks the session reaches its highest total: **750 Echo** and **260 Waves L4** instances. That's 47% and 24% above the M6's best totals with one track per fast core (510 and 210).
 
