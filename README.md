@@ -222,4 +222,4 @@ With that in mind:
 
 As in Part 1, everything here is Ableton Live only, for the reasons given there: Live runs every track in real time within each audio callback, which makes it a direct probe of per-core real-time performance.
 
-[← Part 1: Beyond P-Cores (Apple M6)](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/) · [← Back to camplaix.github.io](https://camplaix.github.io/)
+[← Back to camplaix.github.io](https://camplaix.github.io/) · [← Part 1: Beyond P-Cores (Apple M6)](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/)
