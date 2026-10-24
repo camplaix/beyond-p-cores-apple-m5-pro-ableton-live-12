@@ -1,6 +1,8 @@
 # Ableton Live 12
 # Beyond P-Cores, Part 2: The Mac mini M5 Pro and Its 10-Core Audio Ceiling
 
+*Originally published on [Gearspace](https://gearspace.com/threads/beyond-p-cores-part-2-the-mac-mini-m5-pro-and-its-10-core-audio-ceiling.1470264/), October 2026.*
+
 *A follow-up to [Beyond P-Cores: How Apple's 3-Tier Silicon (M5/M6) Impacts Low-Latency DSP Buffer Scaling and Core Allocation](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/). Same Live project, same plugins, same method.*
 
 In Part 1, the base M6's problem was scarcity. With only **2 Super Cores**, a second heavy track in Ableton Live 12 already spilled onto the slower mid-tier P-cores, and the slowest core set the limit for the whole session.
