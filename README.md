@@ -1,6 +1,8 @@
 # Ableton Live 12
 # Beyond P-Cores, Part 2: The Mac mini M5 Pro and Its 10-Core Audio Ceiling
 
+*Originally published on [Gearspace](https://gearspace.com/threads/beyond-p-cores-part-2-the-mac-mini-m5-pro-and-its-10-core-audio-ceiling.1470264/), October 2026.*
+
 *A follow-up to [Beyond P-Cores: How Apple's 3-Tier Silicon (M5/M6) Impacts Low-Latency DSP Buffer Scaling and Core Allocation](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/). Same Live project, same plugins, same method.*
 
 In Part 1, the base M6's problem was scarcity. With only **2 Super Cores**, a second heavy track in Ableton Live 12 already spilled onto the slower mid-tier P-cores, and the slowest core set the limit for the whole session.
@@ -30,7 +32,7 @@ The Mac mini M6 and Intel Core Ultra 7 270K Plus results are from Part 1, which 
 A single track sustains **44 Waves L4** and **90 Echo** instances at 32 samples. That's 15.4% and 11.8% below the Mac mini M6's 52 and 102. Per core, the M5 Pro's Super Cores are a clear step behind the M6's. They even trail the MacBook Pro base M5 from Part 1, whose fast cores are the same top tier: 96 Echo instances on one track against 90 here. That was a different machine on macOS Tahoe, so I wouldn't read too much into it. On Echo, a single track lands level with the Intel 270K Plus over PCIe (89).
 
 ![1 track, Waves L4, 32 samples](images/m5pro-01ch-l4-32.png)\
-<sub>*1 track, 32 samples, Waves L4: the load runs mostly on Super Core 11, with some time on Cores 12–15. The P-cores carry only background activity.*</sub>
+<sub>*1 track, 32 samples, Waves L4: the load is heaviest on Super Core 11, with the rest spread across Cores 12–15. The P-cores carry only background activity.*</sub>
 
 Unlike the M6, adding tracks doesn't push anything onto the P-cores. At two tracks of Waves L4, where the M6 had already spilled, both tracks stay on the Super Cores:
 
@@ -163,7 +165,7 @@ Headroom drops from 44 to **34 instances at 64 samples (−22.7%)**. It only par
 On the M6 I could only see this with a single track, because multi-track sessions were already on the P-cores. With five Super Cores, the M5 Pro shows it with several tracks too:
 
 ![5 tracks, Waves L4, 128 samples](images/m5pro-05ch-l4-128.png)\
-<sub>*5 tracks, 128 samples, Waves L4: one track has moved to P-core 1, leaving Super Core 11 mostly idle. The other four stay on Super Cores 12–15.*</sub>
+<sub>*5 tracks, 128 samples, Waves L4: one track has moved to P-core 1, leaving Super Core 11 only lightly loaded. The other four stay on Super Cores 12–15.*</sub>
 
 At 32 samples, the same five tracks all ran on Super Cores 11–15. At 128 samples, one of them moves to P-core 1. The session limit comes out at **36 per track**, exactly the single-track L4 result at 128 samples.
 
@@ -193,6 +195,7 @@ At 10 tracks, a bigger buffer didn't help Echo at all: 75 per track at 32 sample
 |---|---|---|---|
 | **Single track** | **102** | 90 | 89 (PCIe @ 32)<br>82 (Babyface @ 48) |
 | **5 tracks** | 415 (83/track) | **420** (84/track) | n/t |
+| **6 tracks** | **510** (85/track) | 486 (81/track) | n/t |
 | **One track per audio core** | 510 (6 × 85) | **750** (10 × 75) | 696 (8 × 87, PCIe @ 32)<br>640 (8 × 80, Babyface @ 48) |
 | **12 tracks** | 504 (42/track) | 540 (45/track) | n/t |
 | **16 tracks** | n/t | 656 (41/track) | **688** (43/track, PCIe @ 32)<br>656 (41/track, Babyface @ 48) |
@@ -214,10 +217,10 @@ With that in mind:
 
 ## Open Questions
 
-- **Where does the 10-core ceiling come from?** macOS, CoreAudio's workgroups and Live's thread pool are all candidates. Counting Live's audio threads is the next thing I'd check.
+- **Where does the 10-core ceiling come from?** macOS, CoreAudio's workgroups and Live's thread pool are all candidates.
 - **Does the 18-core M5 Pro or the M5 Max behave the same way?** If the ceiling is "Super Cores plus one P-cluster," the bigger chips would hit it at a different track count. I haven't tested them.
 - **Why is Waves L4 so much more sensitive to busy cores than Echo?** Possibly how much cache or memory bandwidth it needs, but I haven't measured that.
 
 As in Part 1, everything here is Ableton Live only, for the reasons given there: Live runs every track in real time within each audio callback, which makes it a direct probe of per-core real-time performance.
 
-[← Part 1: Beyond P-Cores (Apple M6)](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/) · [← Back to camplaix.github.io](https://camplaix.github.io/)
+[← Back to camplaix.github.io](https://camplaix.github.io/) · [← Part 1: Beyond P-Cores (Apple M6)](https://camplaix.github.io/beyond-p-cores-apple-m6-ableton-live-12/)
